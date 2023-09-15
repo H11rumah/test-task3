@@ -1,0 +1,191 @@
+$background-color: #526d82;
+$selected_category: #8db1c7;
+$background-color-lighter: #7896a9;
+
+$block-color: #9db2bf;
+$block-color-darker: #8aa1af;
+$block-color-lighter: #b0c3cf;
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: $block-color;
+}
+
+.App {
+    font-family: Nunito;
+
+    h1 {
+        text-align: center;
+    }
+
+    .cls-1 {
+        fill: none;
+    }
+
+    .todo {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        min-width: 320px;
+        max-width: 600px;
+        width: 60%;
+        margin: 0 auto;
+        padding: 3px;
+        border-radius: 5px;
+        background-color: $background-color-lighter;
+        box-shadow: 0px 0px 5px black;
+
+        button {
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+
+            &:active {
+                transform: translateY(1px);
+            }
+        }
+
+        &_new {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            height: 35px;
+
+            .error {
+                border: 2px solid red;
+            }
+
+            input {
+                width: 100%;
+                font-family: Nunito;
+                font-size: 20px;
+                padding: 3px 5px;
+                outline: none;
+                border-radius: 3px;
+                border: none;
+
+                &::-webkit-search-cancel-button {
+                    cursor: pointer;
+                    appearance: none;
+                    height: 20px;
+                    width: 20px;
+                    background: url("data:image/svg+xml,<svg height='20px' viewBox='0 0 512 512' width='20px' xmlns='http://www.w3.org/2000/svg'><path d='M437.5,386.6L306.9,256l130.6-130.6c14.1-14.1,14.1-36.8,0-50.9c-14.1-14.1-36.8-14.1-50.9,0L256,205.1L125.4,74.5  c-14.1-14.1-36.8-14.1-50.9,0c-14.1,14.1-14.1,36.8,0,50.9L205.1,256L74.5,386.6c-14.1,14.1-14.1,36.8,0,50.9  c14.1,14.1,36.8,14.1,50.9,0L256,306.9l130.6,130.6c14.1,14.1,36.8,14.1,50.9,0C451.5,423.4,451.5,400.6,437.5,386.6z' /></svg>")
+                        no-repeat;
+                    background-position: 100% center;
+                }
+            }
+        }
+
+        &_list {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+
+            &_item {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 10px;
+                padding: 5px;
+                box-shadow: 0px 1px 1px black;
+                border-radius: 3px;
+                background-color: #9db2bf;
+
+                .completed {
+                    text-decoration: line-through;
+                }
+
+                span {
+                    word-break: break-all;
+                    width: 100%;
+                }
+
+                &_checkbox {
+                    input[type="checkbox"] {
+                        position: absolute;
+                        overflow: hidden;
+                        clip: rect(0 0 0 0);
+                        height: 1px;
+                        width: 1px;
+                        margin: -1px;
+                        padding: 0;
+                        border: 0;
+                    }
+
+                    input[type="checkbox"] + label {
+                        position: relative;
+                        font-size: 14px;
+                        cursor: pointer;
+                        display: inline-flex;
+                        align-items: center;
+                        height: 35px;
+                        color: rgb(0, 0, 0);
+                    }
+
+                    input[type="checkbox"] + label::before {
+                        content: " ";
+                        display: inline-block;
+                        vertical-align: middle;
+                        margin-right: 3px;
+                        min-width: 30px;
+                        min-height: 30px;
+                        background-color: white;
+                        border-width: 1px;
+                        border-style: dashed;
+                        border-color: rgb(204, 204, 204);
+                        border-radius: 15px;
+                        box-shadow: none;
+                    }
+
+                    input[type="checkbox"]:checked + label::after {
+                        content: " ";
+                        background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjMDAwMDAwIiBkPSJNMTczLjg5OCA0MzkuNDA0bC0xNjYuNC0xNjYuNGMtOS45OTctOS45OTctOS45OTctMjYuMjA2IDAtMzYuMjA0bDM2LjIwMy0zNi4yMDRjOS45OTctOS45OTggMjYuMjA3LTkuOTk4IDM2LjIwNCAwTDE5MiAzMTIuNjkgNDMyLjA5NSA3Mi41OTZjOS45OTctOS45OTcgMjYuMjA3LTkuOTk3IDM2LjIwNCAwbDM2LjIwMyAzNi4yMDRjOS45OTcgOS45OTcgOS45OTcgMjYuMjA2IDAgMzYuMjA0bC0yOTQuNCAyOTQuNDAxYy05Ljk5OCA5Ljk5Ny0yNi4yMDcgOS45OTctMzYuMjA0LS4wMDF6Ii8+PC9zdmc+");
+                        background-repeat: no-repeat;
+                        background-size: 24px 24px;
+                        background-position: center center;
+                        position: absolute;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-left: 0px;
+                        left: 0px;
+                        top: 7px;
+                        text-align: center;
+                        background-color: transparent;
+                        font-size: 10px;
+                        height: 24px;
+                        width: 32px;
+                    }
+                }
+            }
+        }
+
+        &_footer {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+
+            .selected {
+                background-color: $selected_category;
+            }
+
+            &_categories {
+                display: flex;
+                gap: 3px;
+
+                button {
+                    padding: 0px 3px;
+                    border-radius: 5px;
+                }
+            }
+        }
+    }
+}
